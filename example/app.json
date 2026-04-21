@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "name": "rn-sweetalert2-example",
+    "slug": "rn-sweetalert2-example",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "newArchEnabled": true
+  }
+}

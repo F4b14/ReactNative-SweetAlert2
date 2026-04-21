@@ -1,0 +1,6 @@
+node_modules/
+example/
+.git/
+.gitignore
+.npmignore
+*.log
