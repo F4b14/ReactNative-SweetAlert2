@@ -22,7 +22,7 @@ import { DismissReason } from '../utils/DismissReason.js'
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window')
 
-export default function SweetAlert2Modal({ visible, params, onClose }) {
+export default function SimpleAlertModal({ visible, params, onClose }) {
   const [loading, setLoading] = useState(false)
   const [loadingButton, setLoadingButton] = useState(null) // 'confirm' | 'deny'
   const [inputValue, setInputValue] = useState(params.inputValue || '')

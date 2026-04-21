@@ -1,6 +1,6 @@
 import React from 'react'
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import Swal, { DismissReason } from 'rn-sweetalert2'
+import SimpleAlerts, { DismissReason } from 'simple-reactnative-alerts'
 
 function Button({ label, onPress, color = '#7066e0' }) {
   return (
@@ -22,17 +22,17 @@ function Section({ title, children }) {
 export default function ExampleScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.header}>rn-sweetalert2 examples</Text>
+      <Text style={styles.header}>simple-reactnative-alerts examples</Text>
 
       {/* ── Basic ── */}
       <Section title="Basic">
         <Button
           label="Simple fire()"
-          onPress={() => Swal.fire('Hello!', 'This is a basic alert', 'success')}
+          onPress={() => SimpleAlerts.fire('Hello!', 'This is a basic alert', 'success')}
         />
         <Button
           label="Title only"
-          onPress={() => Swal.fire({ title: 'Just a title' })}
+          onPress={() => SimpleAlerts.fire({ title: 'Just a title' })}
           color="#6c757d"
         />
       </Section>
@@ -43,7 +43,7 @@ export default function ExampleScreen() {
           <Button
             key={icon}
             label={icon}
-            onPress={() => Swal.fire({ title: icon, icon })}
+            onPress={() => SimpleAlerts.fire({ title: icon, icon })}
             color="#4a90d9"
           />
         ))}
@@ -54,37 +54,37 @@ export default function ExampleScreen() {
         <Button
           label="Confirm + Cancel"
           onPress={async () => {
-            const result = await Swal.fire({
+            const result = await SimpleAlerts.fire({
               title: 'Are you sure?',
               text: 'This action cannot be undone.',
               icon: 'warning',
               showCancelButton: true,
               confirmButtonText: 'Yes, delete it!',
             })
-            if (result.isConfirmed) Swal.fire('Deleted!', '', 'success')
-            else Swal.fire('Cancelled', '', 'info')
+            if (result.isConfirmed) SimpleAlerts.fire('Deleted!', '', 'success')
+            else SimpleAlerts.fire('Cancelled', '', 'info')
           }}
           color="#dc3545"
         />
         <Button
           label="Confirm + Deny + Cancel"
           onPress={async () => {
-            const result = await Swal.fire({
+            const result = await SimpleAlerts.fire({
               title: 'Save changes?',
               showDenyButton: true,
               showCancelButton: true,
               confirmButtonText: 'Save',
               denyButtonText: 'Discard',
             })
-            if (result.isConfirmed) Swal.fire('Saved!', '', 'success')
-            else if (result.isDenied) Swal.fire('Discarded', '', 'info')
+            if (result.isConfirmed) SimpleAlerts.fire('Saved!', '', 'success')
+            else if (result.isDenied) SimpleAlerts.fire('Discarded', '', 'info')
           }}
           color="#fd7e14"
         />
         <Button
           label="Reversed buttons"
           onPress={() =>
-            Swal.fire({
+            SimpleAlerts.fire({
               title: 'Reversed',
               showCancelButton: true,
               reverseButtons: true,
@@ -99,81 +99,81 @@ export default function ExampleScreen() {
         <Button
           label="Text input"
           onPress={async () => {
-            const { value } = await Swal.fire({
+            const { value } = await SimpleAlerts.fire({
               title: 'Enter your name',
               input: 'text',
               inputPlaceholder: 'Your name...',
               inputLabel: 'Name',
               showCancelButton: true,
             })
-            if (value) Swal.fire(`Hello, ${value}!`, '', 'success')
+            if (value) SimpleAlerts.fire(`Hello, ${value}!`, '', 'success')
           }}
           color="#20c997"
         />
         <Button
           label="Email + validation"
           onPress={async () => {
-            const { value } = await Swal.fire({
+            const { value } = await SimpleAlerts.fire({
               title: 'Enter your email',
               input: 'email',
               inputPlaceholder: 'user@example.com',
               inputValidator: (v) => (!v.includes('@') ? 'Invalid email' : null),
               showCancelButton: true,
             })
-            if (value) Swal.fire(`Email: ${value}`, '', 'success')
+            if (value) SimpleAlerts.fire(`Email: ${value}`, '', 'success')
           }}
           color="#20c997"
         />
         <Button
           label="Password"
           onPress={() =>
-            Swal.fire({ title: 'Enter password', input: 'password', showCancelButton: true })
+            SimpleAlerts.fire({ title: 'Enter password', input: 'password', showCancelButton: true })
           }
           color="#20c997"
         />
         <Button
           label="Textarea"
           onPress={() =>
-            Swal.fire({ title: 'Leave a comment', input: 'textarea', showCancelButton: true })
+            SimpleAlerts.fire({ title: 'Leave a comment', input: 'textarea', showCancelButton: true })
           }
           color="#20c997"
         />
         <Button
           label="Select"
           onPress={async () => {
-            const { value } = await Swal.fire({
+            const { value } = await SimpleAlerts.fire({
               title: 'Pick a fruit',
               input: 'select',
               inputOptions: { apple: 'Apple', banana: 'Banana', orange: 'Orange' },
               showCancelButton: true,
             })
-            if (value) Swal.fire(`You picked: ${value}`, '', 'success')
+            if (value) SimpleAlerts.fire(`You picked: ${value}`, '', 'success')
           }}
           color="#20c997"
         />
         <Button
           label="Radio"
           onPress={async () => {
-            const { value } = await Swal.fire({
+            const { value } = await SimpleAlerts.fire({
               title: 'Choose one',
               input: 'radio',
               inputOptions: { yes: 'Yes', no: 'No' },
               showCancelButton: true,
             })
-            if (value) Swal.fire(`Answer: ${value}`, '', 'success')
+            if (value) SimpleAlerts.fire(`Answer: ${value}`, '', 'success')
           }}
           color="#20c997"
         />
         <Button
           label="Checkbox"
           onPress={async () => {
-            const { value } = await Swal.fire({
+            const { value } = await SimpleAlerts.fire({
               title: 'I agree to terms',
               input: 'checkbox',
               inputValue: false,
               showCancelButton: true,
             })
-            Swal.fire(value ? 'Agreed!' : 'Not agreed', '', value ? 'success' : 'info')
+            SimpleAlerts.fire(value ? 'Agreed!' : 'Not agreed', '', value ? 'success' : 'info')
           }}
           color="#20c997"
         />
@@ -184,7 +184,7 @@ export default function ExampleScreen() {
         <Button
           label="Auto-close (3s)"
           onPress={() =>
-            Swal.fire({ title: 'Closing in 3 seconds...', timer: 3000, timerProgressBar: true })
+            SimpleAlerts.fire({ title: 'Closing in 3 seconds...', timer: 3000, timerProgressBar: true })
           }
           color="#0dcaf0"
         />
@@ -195,7 +195,7 @@ export default function ExampleScreen() {
         <Button
           label="Toast top"
           onPress={() =>
-            Swal.fire({
+            SimpleAlerts.fire({
               title: 'Saved!',
               icon: 'success',
               toast: true,
@@ -210,7 +210,7 @@ export default function ExampleScreen() {
         <Button
           label="Toast bottom"
           onPress={() =>
-            Swal.fire({
+            SimpleAlerts.fire({
               title: 'Deleted!',
               icon: 'error',
               toast: true,
@@ -228,7 +228,7 @@ export default function ExampleScreen() {
         <Button
           label="With image"
           onPress={() =>
-            Swal.fire({
+            SimpleAlerts.fire({
               title: 'Custom Image',
               imageUrl: 'https://placecats.com/200/200',
               imageWidth: 200,
@@ -251,7 +251,7 @@ export default function ExampleScreen() {
             const values = []
 
             for (let i = 0; i < steps.length; i++) {
-              const result = await Swal.fire({
+              const result = await SimpleAlerts.fire({
                 title: titles[i],
                 progressSteps: steps,
                 currentProgressStep: i,
@@ -264,7 +264,7 @@ export default function ExampleScreen() {
             }
 
             if (values.length === steps.length) {
-              Swal.fire(`Done! Name: ${values[0]}, Email: ${values[1]}`, '', 'success')
+              SimpleAlerts.fire(`Done! Name: ${values[0]}, Email: ${values[1]}`, '', 'success')
             }
           }}
           color="#6f42c1"
@@ -276,7 +276,7 @@ export default function ExampleScreen() {
         <Button
           label="Fetch on confirm"
           onPress={async () => {
-            const { value } = await Swal.fire({
+            const { value } = await SimpleAlerts.fire({
               title: 'Fetch a user',
               text: 'Press confirm to load data',
               showLoaderOnConfirm: true,
@@ -285,7 +285,7 @@ export default function ExampleScreen() {
                 return res.json()
               },
             })
-            if (value) Swal.fire(`Loaded: ${value.name}`, value.email, 'success')
+            if (value) SimpleAlerts.fire(`Loaded: ${value.name}`, value.email, 'success')
           }}
           color="#fd7e14"
         />
@@ -296,7 +296,7 @@ export default function ExampleScreen() {
         <Button
           label="Check dismiss reason"
           onPress={async () => {
-            const result = await Swal.fire({
+            const result = await SimpleAlerts.fire({
               title: 'Dismiss me',
               text: 'Tap outside, cancel, or wait...',
               showCancelButton: true,
@@ -309,7 +309,7 @@ export default function ExampleScreen() {
                 [DismissReason.timer]: 'Timer expired',
                 [DismissReason.esc]: 'Back button',
               }
-              Swal.fire(`Dismissed by: ${reasons[result.dismiss] ?? result.dismiss}`)
+              SimpleAlerts.fire(`Dismissed by: ${reasons[result.dismiss] ?? result.dismiss}`)
             }
           }}
           color="#6c757d"
@@ -321,7 +321,7 @@ export default function ExampleScreen() {
         <Button
           label="Dark theme"
           onPress={() =>
-            Swal.fire({
+            SimpleAlerts.fire({
               title: 'Dark Alert',
               text: 'Custom styled popup',
               icon: 'info',
@@ -342,7 +342,7 @@ export default function ExampleScreen() {
         <Button
           label="Mixin toast"
           onPress={() => {
-            const Toast = Swal.mixin({
+            const Toast = SimpleAlerts.mixin({
               toast: true,
               timer: 3000,
               timerProgressBar: true,
@@ -360,9 +360,9 @@ export default function ExampleScreen() {
         <Button
           label="Fire 3 alerts in sequence"
           onPress={() => {
-            Swal.fire({ title: 'First', icon: 'info' })
-            Swal.fire({ title: 'Second', icon: 'warning' })
-            Swal.fire({ title: 'Third', icon: 'success' })
+            SimpleAlerts.fire({ title: 'First', icon: 'info' })
+            SimpleAlerts.fire({ title: 'Second', icon: 'warning' })
+            SimpleAlerts.fire({ title: 'Third', icon: 'success' })
           }}
           color="#4a90d9"
         />

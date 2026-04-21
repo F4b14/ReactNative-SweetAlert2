@@ -1,9 +1,9 @@
 import { ComponentType, ReactNode } from 'react'
 import { StyleProp, ViewStyle, TextStyle } from 'react-native'
 
-export type SweetAlertIcon = 'success' | 'error' | 'warning' | 'info' | 'question'
+export type AlertIcon = 'success' | 'error' | 'warning' | 'info' | 'question'
 
-export type SweetAlertInput =
+export type AlertInput =
   | 'text'
   | 'email'
   | 'password'
@@ -15,14 +15,14 @@ export type SweetAlertInput =
   | 'radio'
   | 'checkbox'
 
-export type SweetAlertPosition =
+export type AlertPosition =
   | 'top'
   | 'top-start'
   | 'top-end'
   | 'center'
   | 'bottom'
 
-export interface SweetAlertResult {
+export interface AlertResult {
   isConfirmed: boolean
   isDenied: boolean
   isDismissed: boolean
@@ -40,11 +40,11 @@ export interface DismissReasonRecord {
   timer: 'timer'
 }
 
-export interface SweetAlertOptions {
+export interface AlertOptions {
   title?: string
   text?: string
   html?: string
-  icon?: SweetAlertIcon
+  icon?: AlertIcon
   iconColor?: string
   toast?: boolean
   showConfirmButton?: boolean
@@ -62,7 +62,7 @@ export interface SweetAlertOptions {
   allowBackHandler?: boolean
   timer?: number
   timerProgressBar?: boolean
-  input?: SweetAlertInput
+  input?: AlertInput
   inputPlaceholder?: string
   inputLabel?: string
   inputValue?: string | number | boolean
@@ -80,7 +80,7 @@ export interface SweetAlertOptions {
   padding?: number
   background?: string
   color?: string
-  position?: SweetAlertPosition
+  position?: AlertPosition
   progressSteps?: string[]
   currentProgressStep?: number
   preConfirm?: (value?: string) => any | Promise<any>
@@ -100,22 +100,22 @@ export interface SweetAlertOptions {
   customCancelButtonStyle?: StyleProp<ViewStyle>
 }
 
-export interface SwalInstance {
-  fire(options: SweetAlertOptions): Promise<SweetAlertResult>
-  fire(title: string, text?: string, icon?: SweetAlertIcon): Promise<SweetAlertResult>
+export interface SimpleAlertsInstance {
+  fire(options: AlertOptions): Promise<AlertResult>
+  fire(title: string, text?: string, icon?: AlertIcon): Promise<AlertResult>
   close(): void
   isVisible(): Promise<boolean>
-  mixin(options: SweetAlertOptions): SwalInstance
+  mixin(options: AlertOptions): SimpleAlertsInstance
   DismissReason: DismissReasonRecord
 }
 
-export interface SweetAlert2ProviderProps {
+export interface SimpleAlertProviderProps {
   children: ReactNode
 }
 
-declare const Swal: SwalInstance
-export { Swal }
-export default Swal
+declare const SimpleAlerts: SimpleAlertsInstance
+export { SimpleAlerts }
+export default SimpleAlerts
 
-export declare const SweetAlert2Provider: ComponentType<SweetAlert2ProviderProps>
+export declare const SimpleAlertProvider: ComponentType<SimpleAlertProviderProps>
 export declare const DismissReason: DismissReasonRecord

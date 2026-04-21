@@ -1,10 +1,10 @@
-import { SweetAlert2Provider } from 'rn-sweetalert2'
+import { SimpleAlertProvider } from 'simple-reactnative-alerts'
 import ExampleScreen from './src/ExampleScreen'
 
 export default function App() {
   return (
-    <SweetAlert2Provider>
+    <SimpleAlertProvider>
       <ExampleScreen />
-    </SweetAlert2Provider>
+    </SimpleAlertProvider>
   )
 }

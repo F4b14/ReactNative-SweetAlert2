@@ -4,18 +4,18 @@ import { DismissReason } from './utils/DismissReason.js'
 export const emitter = new EventEmitter()
 
 /**
- * SweetAlert2 for React Native.
- * Use Swal.fire() to display alerts from anywhere in your app,
- * as long as <SweetAlert2Provider> wraps your root component.
+ * SimpleReactNativeAlerts.
+ * Use SimpleAlerts.fire() to display alerts from anywhere in your app,
+ * as long as <SimpleAlertProvider> wraps your root component.
  */
-const Swal = {
+const SimpleAlerts = {
   /**
-   * Display a SweetAlert2 dialog.
+   * Display an alert dialog.
    *
-   * @param {string | SweetAlertOptions} titleOrOptions
+   * @param {string | AlertOptions} titleOrOptions
    * @param {string} [text]
    * @param {string} [icon]
-   * @returns {Promise<SweetAlertResult>}
+   * @returns {Promise<AlertResult>}
    */
   fire(titleOrOptions, text, icon) {
     let params
@@ -49,12 +49,12 @@ const Swal = {
 
   /**
    * Create a new instance with pre-set default options (mixin).
-   * @param {SweetAlertOptions} mixinParams
-   * @returns {typeof Swal}
+   * @param {AlertOptions} mixinParams
+   * @returns {typeof SimpleAlerts}
    */
   mixin(mixinParams) {
     return {
-      ...Swal,
+      ...SimpleAlerts,
       fire(titleOrOptions, text, icon) {
         let params
         if (typeof titleOrOptions === 'string') {
@@ -62,7 +62,7 @@ const Swal = {
         } else {
           params = titleOrOptions
         }
-        return Swal.fire(Object.assign({}, mixinParams, params))
+        return SimpleAlerts.fire(Object.assign({}, mixinParams, params))
       },
     }
   },
@@ -70,4 +70,4 @@ const Swal = {
   DismissReason,
 }
 
-export default Swal
+export default SimpleAlerts

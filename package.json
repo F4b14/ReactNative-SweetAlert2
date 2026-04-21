@@ -1,10 +1,9 @@
 {
-  "name": "rn-sweetalert2",
+  "name": "simple-reactnative-alerts",
   "version": "0.1.0",
-  "description": "A React Native port of SweetAlert2 — beautiful, customizable alert dialogs with the familiar Swal.fire() API.",
+  "description": "Simple, beautiful and customizable alert dialogs for React Native and Expo apps.",
   "keywords": [
     "react-native",
-    "sweetalert2",
     "alert",
     "dialog",
     "modal",
@@ -26,14 +25,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/F4b14/ReactNative-SweetAlert2.git"
+    "url": "git+https://github.com/F4b14/SimpleReactNativeAlerts.git"
   },
   "author": "F4b14",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/F4b14/ReactNative-SweetAlert2/issues"
+    "url": "https://github.com/F4b14/SimpleReactNativeAlerts/issues"
   },
-  "homepage": "https://github.com/F4b14/ReactNative-SweetAlert2#readme",
+  "homepage": "https://github.com/F4b14/SimpleReactNativeAlerts#readme",
   "dependencies": {
     "expo": "^55.0.16"
   }

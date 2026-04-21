@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "rn-sweetalert2-example",
-    "slug": "rn-sweetalert2-example",
+    "name": "simple-reactnative-alerts-example",
+    "slug": "simple-reactnative-alerts-example",
     "version": "1.0.0",
     "orientation": "portrait",
     "newArchEnabled": true

@@ -1,22 +1,22 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
-import SweetAlert2Modal from './components/SweetAlert2Modal.jsx'
-import { emitter } from './Swal.js'
+import SimpleAlertModal from './components/SimpleAlertModal.jsx'
+import { emitter } from './SimpleAlerts.js'
 import { defaultParams } from './utils/params.js'
 
 /**
- * Wrap your app's root component with SweetAlert2Provider to enable
- * Swal.fire() calls from anywhere in your application.
+ * Wrap your app's root component with SimpleAlertProvider to enable
+ * SimpleAlerts.fire() calls from anywhere in your application.
  *
  * @example
  * export default function App() {
  *   return (
- *     <SweetAlert2Provider>
+ *     <SimpleAlertProvider>
  *       <YourApp />
- *     </SweetAlert2Provider>
+ *     </SimpleAlertProvider>
  *   )
  * }
  */
-export default function SweetAlert2Provider({ children }) {
+export default function SimpleAlertProvider({ children }) {
   const [visible, setVisible] = useState(false)
   const [params, setParams] = useState({})
   const resolveRef = useRef(null)
@@ -91,7 +91,7 @@ export default function SweetAlert2Provider({ children }) {
   return (
     <>
       {children}
-      <SweetAlert2Modal visible={visible} params={params} onClose={handleClose} />
+      <SimpleAlertModal visible={visible} params={params} onClose={handleClose} />
     </>
   )
 }

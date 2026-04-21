@@ -1,15 +1,15 @@
-# ReactNative-SweetAlert2
+# SimpleReactNativeAlerts
 
-A React Native port of the popular [SweetAlert2](https://sweetalert2.github.io/) library. Display beautiful, responsive, and customizable alert dialogs in your React Native / Expo apps with the same familiar `Swal.fire()` API.
+Simple, beautiful and customizable alert dialogs for React Native and Expo apps.
 
 ---
 
 ## Installation
 
 ```bash
-npm install rn-sweetalert2
+npm install simple-reactnative-alerts
 # or
-yarn add rn-sweetalert2
+yarn add simple-reactnative-alerts
 ```
 
 > No native modules required. Works with Expo and bare React Native projects out of the box.
@@ -18,16 +18,16 @@ yarn add rn-sweetalert2
 
 ## Setup
 
-Wrap your root component with `SweetAlert2Provider`:
+Wrap your root component with `SimpleAlertProvider`:
 
 ```jsx
-import { SweetAlert2Provider } from 'rn-sweetalert2'
+import { SimpleAlertProvider } from 'simple-reactnative-alerts'
 
 export default function App() {
   return (
-    <SweetAlert2Provider>
+    <SimpleAlertProvider>
       <YourApp />
-    </SweetAlert2Provider>
+    </SimpleAlertProvider>
   )
 }
 ```
@@ -37,13 +37,13 @@ export default function App() {
 ## Basic Usage
 
 ```jsx
-import Swal from 'rn-sweetalert2'
+import SimpleAlerts from 'simple-reactnative-alerts'
 
 // Simple alert
-await Swal.fire('Hello!', 'This is a basic alert', 'success')
+await SimpleAlerts.fire('Hello!', 'This is a basic alert', 'success')
 
 // Using options object
-const result = await Swal.fire({
+const result = await SimpleAlerts.fire({
   title: 'Are you sure?',
   text: 'This action cannot be undone.',
   icon: 'warning',
@@ -64,11 +64,11 @@ if (result.isConfirmed) {
 Supported icon types: `success` | `error` | `warning` | `info` | `question`
 
 ```jsx
-Swal.fire({ title: 'Done!', icon: 'success' })
-Swal.fire({ title: 'Oops!', icon: 'error' })
-Swal.fire({ title: 'Careful!', icon: 'warning' })
-Swal.fire({ title: 'Did you know?', icon: 'info' })
-Swal.fire({ title: 'Are you sure?', icon: 'question' })
+SimpleAlerts.fire({ title: 'Done!', icon: 'success' })
+SimpleAlerts.fire({ title: 'Oops!', icon: 'error' })
+SimpleAlerts.fire({ title: 'Careful!', icon: 'warning' })
+SimpleAlerts.fire({ title: 'Did you know?', icon: 'info' })
+SimpleAlerts.fire({ title: 'Are you sure?', icon: 'question' })
 ```
 
 ---
@@ -79,7 +79,7 @@ Collect input from the user directly inside the alert.
 
 ```jsx
 // Text input
-const { value } = await Swal.fire({
+const { value } = await SimpleAlerts.fire({
   title: 'Enter your name',
   input: 'text',
   inputPlaceholder: 'Your name...',
@@ -88,27 +88,27 @@ const { value } = await Swal.fire({
 })
 
 // Password
-await Swal.fire({ title: 'Password', input: 'password' })
+await SimpleAlerts.fire({ title: 'Password', input: 'password' })
 
 // Textarea
-await Swal.fire({ title: 'Comments', input: 'textarea' })
+await SimpleAlerts.fire({ title: 'Comments', input: 'textarea' })
 
 // Select dropdown
-const { value } = await Swal.fire({
+const { value } = await SimpleAlerts.fire({
   title: 'Pick a fruit',
   input: 'select',
   inputOptions: { apple: 'Apple', banana: 'Banana', orange: 'Orange' },
 })
 
 // Radio buttons
-const { value } = await Swal.fire({
+const { value } = await SimpleAlerts.fire({
   title: 'Choose one',
   input: 'radio',
   inputOptions: { yes: 'Yes', no: 'No' },
 })
 
 // Checkbox
-const { value } = await Swal.fire({
+const { value } = await SimpleAlerts.fire({
   title: 'I agree to terms',
   input: 'checkbox',
   inputValue: false,
@@ -118,7 +118,7 @@ const { value } = await Swal.fire({
 ### Input Validation
 
 ```jsx
-const { value: email } = await Swal.fire({
+const { value: email } = await SimpleAlerts.fire({
   title: 'Enter your email',
   input: 'email',
   inputValidator: (value) => {
@@ -132,7 +132,7 @@ const { value: email } = await Swal.fire({
 ## Confirm / Deny / Cancel
 
 ```jsx
-const result = await Swal.fire({
+const result = await SimpleAlerts.fire({
   title: 'Save changes?',
   showConfirmButton: true,
   showDenyButton: true,
@@ -151,7 +151,7 @@ else if (result.isDismissed) console.log('Cancelled')
 ## Auto-close Timer
 
 ```jsx
-Swal.fire({
+SimpleAlerts.fire({
   title: 'Auto-closing in 3s...',
   timer: 3000,
   timerProgressBar: true,
@@ -163,7 +163,7 @@ Swal.fire({
 ## Toast
 
 ```jsx
-Swal.fire({
+SimpleAlerts.fire({
   title: 'Saved!',
   icon: 'success',
   toast: true,
@@ -180,7 +180,7 @@ Swal.fire({
 Supported: `'top'` | `'top-start'` | `'top-end'` | `'center'` | `'bottom'`
 
 ```jsx
-Swal.fire({ title: 'Top alert', position: 'top' })
+SimpleAlerts.fire({ title: 'Top alert', position: 'top' })
 ```
 
 ---
@@ -189,14 +189,14 @@ Swal.fire({ title: 'Top alert', position: 'top' })
 
 ```jsx
 // Step 1
-await Swal.fire({
+await SimpleAlerts.fire({
   title: 'Step 1 of 3',
   progressSteps: ['1', '2', '3'],
   currentProgressStep: 0,
 })
 
 // Step 2
-await Swal.fire({
+await SimpleAlerts.fire({
   title: 'Step 2 of 3',
   progressSteps: ['1', '2', '3'],
   currentProgressStep: 1,
@@ -208,7 +208,7 @@ await Swal.fire({
 ## Image
 
 ```jsx
-Swal.fire({
+SimpleAlerts.fire({
   title: 'Custom Image',
   imageUrl: 'https://placekitten.com/200/200',
   imageWidth: 200,
@@ -222,7 +222,7 @@ Swal.fire({
 ## Async preConfirm
 
 ```jsx
-const { value } = await Swal.fire({
+const { value } = await SimpleAlerts.fire({
   title: 'Fetch data',
   showLoaderOnConfirm: true,
   preConfirm: async () => {
@@ -237,7 +237,7 @@ const { value } = await Swal.fire({
 ## Mixin (pre-set defaults)
 
 ```jsx
-const Toast = Swal.mixin({
+const Toast = SimpleAlerts.mixin({
   toast: true,
   timer: 3000,
   timerProgressBar: true,
@@ -254,10 +254,10 @@ Toast.fire({ title: 'Welcome back!', icon: 'success' })
 
 ```jsx
 // Close the current dialog
-Swal.close()
+SimpleAlerts.close()
 
 // Check if a dialog is open
-const visible = await Swal.isVisible()
+const visible = await SimpleAlerts.isVisible()
 ```
 
 ---
@@ -265,7 +265,7 @@ const visible = await Swal.isVisible()
 ## Custom Styles
 
 ```jsx
-Swal.fire({
+SimpleAlerts.fire({
   title: 'Styled Alert',
   customPopupStyle: { borderRadius: 20, backgroundColor: '#1e1e2e' },
   customTitleStyle: { color: '#cdd6f4', fontSize: 20 },
@@ -280,9 +280,9 @@ Swal.fire({
 ## DismissReason
 
 ```jsx
-import { DismissReason } from 'rn-sweetalert2'
+import { DismissReason } from 'simple-reactnative-alerts'
 
-const result = await Swal.fire({
+const result = await SimpleAlerts.fire({
   title: 'Dismissable',
   showCancelButton: true,
   allowOutsideClick: true,
@@ -303,19 +303,18 @@ if (result.isDismissed) {
 
 ## API Reference
 
-### `Swal.fire(options)` / `Swal.fire(title, text?, icon?)`
+### `SimpleAlerts.fire(options)` / `SimpleAlerts.fire(title, text?, icon?)`
 
-Returns `Promise<SweetAlertResult>`.
+Returns `Promise<AlertResult>`.
 
 | Option | Type | Default | Description |
 |---|---|---|---|
 | `title` | `string` | `''` | Alert title |
 | `text` | `string` | `''` | Body text |
-| `html` | `string` | — | JSX/HTML content (overrides `text`) |
-| `icon` | `SweetAlertIcon` | — | Icon type |
+| `icon` | `AlertIcon` | — | Icon type |
 | `iconColor` | `string` | — | Custom icon color |
 | `toast` | `boolean` | `false` | Show as toast |
-| `position` | `SweetAlertPosition` | `'center'` | Dialog position |
+| `position` | `AlertPosition` | `'center'` | Dialog position |
 | `timer` | `number` | — | Auto-close delay (ms) |
 | `timerProgressBar` | `boolean` | `false` | Show timer progress bar |
 | `showConfirmButton` | `boolean` | `true` | Show confirm button |
@@ -331,7 +330,7 @@ Returns `Promise<SweetAlertResult>`.
 | `reverseButtons` | `boolean` | `false` | Reverse button order |
 | `allowOutsideClick` | `boolean` | `true` | Dismiss on backdrop tap |
 | `allowBackHandler` | `boolean` | `true` | Dismiss on Android back |
-| `input` | `SweetAlertInput` | — | Input type |
+| `input` | `AlertInput` | — | Input type |
 | `inputLabel` | `string` | `''` | Label above input |
 | `inputPlaceholder` | `string` | `''` | Input placeholder |
 | `inputValue` | `string\|number\|boolean` | `''` | Initial input value |
@@ -367,7 +366,7 @@ Returns `Promise<SweetAlertResult>`.
 | `customDenyButtonStyle` | `ViewStyle` | — | Style for deny button |
 | `customCancelButtonStyle` | `ViewStyle` | — | Style for cancel button |
 
-### `SweetAlertResult`
+### `AlertResult`
 
 ```ts
 {
@@ -386,7 +385,64 @@ Returns `Promise<SweetAlertResult>`.
 Full TypeScript support is included out of the box via bundled `.d.ts` types.
 
 ```ts
-import Swal, { SweetAlertOptions, SweetAlertResult, DismissReason } from 'rn-sweetalert2'
+import SimpleAlerts, { AlertOptions, AlertResult, DismissReason } from 'simple-reactnative-alerts'
+```
+
+---
+
+## Development
+
+### Clone and install
+
+```bash
+git clone https://github.com/F4b14/SimpleReactNativeAlerts.git
+cd SimpleReactNativeAlerts
+npm install
+```
+
+### Run the example app
+
+The `example/` directory contains a full Expo app that demonstrates every feature.
+
+```bash
+# From the root of the repo (shortcut):
+npm run example
+
+# Or manually:
+cd example
+npm install
+npx expo start
+```
+
+Then press:
+- `a` to open on an Android emulator / device
+- `i` to open on an iOS simulator (macOS only)
+- `w` to open in the browser (Expo Go web)
+
+### Project structure
+
+```
+simple-reactnative-alerts/
+├── src/
+│   ├── index.js                  # Public entry point
+│   ├── index.d.ts                # TypeScript definitions
+│   ├── SimpleAlerts.js           # SimpleAlerts object (fire / close / isVisible / mixin)
+│   ├── SimpleAlertProvider.jsx   # Context provider — wrap your app root with this
+│   ├── components/
+│   │   ├── SimpleAlertModal.jsx  # Core modal/toast renderer
+│   │   ├── Icon.jsx              # Animated icon (success/error/warning/info/question)
+│   │   ├── InputField.jsx        # All input types
+│   │   ├── ProgressSteps.jsx     # Multi-step progress indicator
+│   │   └── TimerProgressBar.jsx  # Animated countdown bar
+│   └── utils/
+│       ├── DismissReason.js      # Dismiss reason constants
+│       ├── EventEmitter.js       # Internal pub/sub bus
+│       ├── params.js             # Default option values
+│       └── Timer.js              # Pauseable setTimeout wrapper
+└── example/
+    ├── App.jsx                   # Expo entry — wraps app in SimpleAlertProvider
+    └── src/
+        └── ExampleScreen.jsx     # Interactive demo of all features
 ```
 
 ---
