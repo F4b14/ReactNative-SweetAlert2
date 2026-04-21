@@ -2,6 +2,8 @@
 
 Simple, beautiful and customizable alert dialogs for React Native and Expo apps.
 
+> Inspired by [SweetAlert2](https://sweetalert2.github.io/) — an independent React Native adaptation of its API. Not affiliated with or endorsed by the SweetAlert2 project.
+
 ---
 
 ## Installation
