@@ -15,7 +15,7 @@ Simple, beautiful and customizable alert dialogs for React Native and Expo apps.
 1. **Download or clone this repository** into your project (e.g. inside a `libs/` folder):
 
    ```bash
-   git clone https://github.com/your-username/ReactNative-SweetAlert2.git libs/simple-reactnative-alerts
+   git clone https://github.com/F4b14/SimpleReactNativeAlerts.git libs/simple-reactnative-alerts
    ```
 
 2. **Add it as a local dependency** in your `package.json`:
