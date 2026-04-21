@@ -22,6 +22,9 @@ import { DismissReason } from '../utils/DismissReason.js'
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window')
 
+// Only allow safe remote URI schemes for images
+const SAFE_IMAGE_URI_RE = /^https?:\/\//i
+
 export default function SimpleAlertModal({ visible, params, onClose }) {
   const [loading, setLoading] = useState(false)
   const [loadingButton, setLoadingButton] = useState(null) // 'confirm' | 'deny'
@@ -262,7 +265,7 @@ export default function SimpleAlertModal({ visible, params, onClose }) {
 
       {params.icon && <Icon icon={params.icon} iconColor={params.iconColor} />}
 
-      {params.imageUrl && (
+      {!!params.imageUrl && SAFE_IMAGE_URI_RE.test(params.imageUrl) && (
         <Image
           source={{ uri: params.imageUrl }}
           style={[

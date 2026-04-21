@@ -16,9 +16,18 @@ export default function InputField({ params, onValueChange, validationMessage })
     inputPlaceholder,
     inputValue,
     inputOptions,
-    inputAttributes = {},
+    inputAttributes: rawInputAttributes = {},
     inputAutoFocus,
   } = params
+
+  // Strip props that could override security-sensitive TextInput behaviour
+  const {
+    secureTextEntry: _secureTextEntry,
+    onChangeText: _onChangeText,
+    value: _value,
+    onChange: _onChange,
+    ...safeInputAttributes
+  } = rawInputAttributes
 
   const [localValue, setLocalValue] = useState(
     inputValue !== undefined ? String(inputValue) : ''
@@ -75,7 +84,7 @@ export default function InputField({ params, onValueChange, validationMessage })
           numberOfLines={input === 'textarea' ? 4 : 1}
           autoFocus={inputAutoFocus}
           autoCapitalize="none"
-          {...inputAttributes}
+          {...safeInputAttributes}
         />
       )}
 
